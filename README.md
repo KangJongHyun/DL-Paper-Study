@@ -1,6 +1,6 @@
 # DL-Paper-Study
 
-# ${\textsf{\color{blue}Attention is All You Need}}$
+# ${\textsf{\color{blue}Attention is All You Need-Transformer}}$
 
 **Author**   
 Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin  
