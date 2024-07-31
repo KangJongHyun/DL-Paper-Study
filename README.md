@@ -9,7 +9,7 @@ Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N
 **Model Architecture**  
 
 ![스크린샷, 2024-07-31 15-38-55](https://github.com/user-attachments/assets/e6953b5e-696c-47ee-b4be-af844c1ec5ec)
-
+<img src="https://github.com/user-attachments/assets/e6953b5e-696c-47ee-b4be-af844c1ec5ec" width="800" height="400"/>
 
 기존 neural sequence 모델은 Encode-Decoder 구조를 가지고 있다. 보통 인코터는 입력 시퀀스 $(x_1, ... x_n)$에서 연속적인 표현 시퀀스 $z=z_1, ... , z_n$으로 매핑한다. 이후 디코더는 출력 시퀀스 $(y_1, ... , y_m)&을 생성한다. 각 단계에서 모델은 Auto regressive 하며 Transformer에서는 인토더와 디코더 모두 self-attention 메커니즘과 Point wise Fully connection 을 사용하여 아키텍쳐를 구성한다.  
 
