@@ -17,5 +17,12 @@ Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N
 
 🤑 **인코더와 디코더, Attention 메커니즘이란?** 🤑  
 참고 : https://glee1228.tistory.com/3  
-Attention Mechanism : 
+**Attention Mechanism** : 기존의 seq2seq 모델에서는 각 seq를 임베딩(RNN을 거치면서) 하고 Context 벡터로 내놓을 때 고정된 크기로 내놓게 되면서 병목현상이 발생한다. 이는 모델의 딜레이를 초래하게 되고 단점으로써 작용한다. 또한 하나의 seq가 소스 문장의 모든 정보를 가지고 있어야 한다. 이를 해결하기 위해서 기존 Hidden레이어로 작용하는 출력값들을 모두 입력으로서 받는다는 발상이 나온다. Attention메커니즘의 기본 아이디어다.   
+- Hidden State를 모두 별도의 배열 &W& 에 저장함으로써, Output seq를 생성할 때 마다 $w$ 를 모두 참고한다.
+- 이때, 단어별로 가중치를 두고 참고한다.
+
+
+**Decoder 계산 방식** : 디코더에서 $s_n$을 만드는 방식은 이전의 $s_{n-1}$ 의 값과 sorce seq의 hidden state 값들을 이용하여 계산한다.   
+
+
 
