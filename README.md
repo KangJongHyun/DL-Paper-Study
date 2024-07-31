@@ -9,7 +9,7 @@ Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N
 **Model Architecture**  
 <img src="https://github.com/user-attachments/assets/e6953b5e-696c-47ee-b4be-af844c1ec5ec" width="300" height="500"/>
 
-기존 neural sequence 모델은 Encode-Decoder 구조를 가지고 있다. 보통 인코터는 입력 시퀀스 $(x_1, ... x_n)$에서 연속적인 표현 시퀀스 $z=z_1, ... , z_n$으로 매핑한다. 이후 디코더는 출력 시퀀스 $(y_1, ... , y_m)&을 생성한다. 각 단계에서 모델은 Auto regressive 하며 Transformer에서는 인토더와 디코더 모두 self-attention 메커니즘과 Point wise Fully connection 을 사용하여 아키텍쳐를 구성한다.   
+기존 neural sequence 모델은 Encode-Decoder 구조를 가지고 있다. 보통 인코터는 입력 시퀀스 $(x_1, ... x_n)$에서 연속적인 표현 시퀀스 $z=z_1, ... , z_n$으로 매핑한다. 이후 디코더는 출력 시퀀스 $(y_1, ... , y_m)$을 생성한다. 각 단계에서 모델은 Auto regressive 하며 Transformer에서는 인토더와 디코더 모두 self-attention 메커니즘과 Point wise Fully connection 을 사용하여 아키텍쳐를 구성한다.   
 
 
 **Incoder** : 구성 자체는, $N=6$ 개의 동일한 레이어로 구성된 스택형태. 각 레이어에는 두 개의 서브 레이어가 있는데, 위의 그림에서 확인할 수 있다. Multi-Head self Attention 메커니즘과 단순한 Position wise fully connected feed forward 네트워크이다. 각 서브 레이어 주위에는 Residual Connection(TCN 참고)를 사용하고, 뒤에서는 Normalization을 통해 레이어를 정규화한다. 이로써 각 서브 레이어의 Output은 $LayerNorm(x+Sublayer(x))$이며, $Sublayer(x)$는 서브 레이어의 자체 함수다. 이러한 Residual 연결을 용이하게 하기 위해 모델의 모든 서브 레이어와 임베딩 레이어는 $d_model = 512$의 차원을 갖는 출력을 생성한다.   
@@ -23,6 +23,8 @@ Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N
 
 
 **Decoder 계산 방식** : 디코더에서 $s_n$을 만드는 방식은 이전의 $s_{n-1}$ 의 값과 sorce seq의 hidden state 값들을 이용하여 계산한다.   
+Energy : seq기준으로, 단어를 출력하기 위해서 $W$에서 어떤 값에 초점을 둘지 수치화. 이후  SOFTMAX를 씌워 가중치를 계산한다. 
+$e_{ij}=a(s_{i-1},h_j)$, 가중치 $\alpha_{ij} = softmax(e_{ij})$
 
 
 
