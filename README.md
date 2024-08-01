@@ -16,7 +16,10 @@ Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N
 **Decoder** : Incoder와 마찬가지로 동일한 스펙의 스택으로 이루어져 있다. 다만 인코더와는 조금 다르게, 인코더의 두 서브 레이어 외에도 디코더는 인코더 스택의 Output을 통해 Multi-head Attention메커니즘을 우행하는 세번째 레이어를 추가한다.  
 
 
-사용되는 attention 메커니즘은 Query, Key-value 쌍을 출력으로 mapping하는 것으로 설명할 수 있다. 
+사용되는 attention 메커니즘은 Query, Key-value 쌍을 출력으로 mapping하는 것으로 설명할 수 있다.  
+본 논문에서는 사용하는 Attention 메커니즘을 Scaled Dot-Product Attention 이라고 부른다. 
+<img src="https://github.com/user-attachments/assets/8ae380ac-e6e8-41b7-8d0d-bae0447cb763" width="600" height="300"/>   
+input으로는 차원 $d_k$의 Query 와 Key, 그리고 차원 $d_v$를 준다. 이를 이용해서 가중치를 구할 수 있다. 
 
 🤑 **인코더와 디코더, Attention 메커니즘이란?** 🤑  
 참고 : https://glee1228.tistory.com/3  
@@ -28,7 +31,11 @@ Energy : seq기준으로, 단어를 출력하기 위해서 $W$에서 어떤 값�
 $e_{ij}=a(s_{i-1},h_j)$, 가중치 $\alpha_{ij} = softmax(e_{ij})$  
 
 <img src="https://github.com/user-attachments/assets/b010e26b-abfd-40e4-abd1-133506a12f7a" width="600" height="300"/>  
-다시, 정리해서 말하면. 디코딩 과정 중에서 어떠한 단어($s_n$)을 출력할 때, 이전 state와 Hidden Layer 각각의 energy를 구하여 최종 디코더 input $c_n$을 구한 후 출력값을 구해내는 일련의 과정이다.
+
+다시, 정리해서 말하면. 디코딩 과정 중에서 어떠한 단어 $s_n$ 을 출력할 때, 이전 state와 Hidden Layer 각각의 energy를 구하여 최종 디코더 input $c_n$을 구한 후 출력값을 구해내는 일련의 과정이다.  
+
+🤑 **Embedding** 🤑  
+
 
 
 
